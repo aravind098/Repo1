@@ -1,7 +1,5 @@
 
 
-
-
 <html>
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -130,7 +128,62 @@
 			orders_missed: 16}
 		]
 		
-		}
+		},
+
+
+		{
+
+			
+
+date: "13/12/19",
+details:[
+	{
+	driver_name: "ram",
+	truck_number: "KA 03 2132", 
+	distance_travelled: 50,
+	orders_delivered: 65,
+	orders_missed: 20},
+	{ 
+	driver_name: "raju",
+	truck_number: "KA 03 2354", 
+	distance_travelled: 30,
+	orders_delivered: 65,
+	orders_missed: 34},
+	{ 
+	driver_name: "john",
+	truck_number: "KA 03 7676", 
+	distance_travelled: 70,
+	orders_delivered: 39,
+	orders_missed: 4},
+	{
+	driver_name: "sam",
+	truck_number: "KA 03 3645", 
+	distance_travelled: 56,
+	orders_delivered: 52,
+	orders_missed: 42},
+	{ 
+	driver_name: "tre",
+	truck_number: "KA 03 9867", 
+	distance_travelled: 58,
+	orders_delivered: 32,
+	orders_missed: 11},
+	{
+	driver_name: "abrggdc",
+	truck_number: "KA 03 0989", 
+	distance_travelled: 50,
+	orders_delivered: 45,
+	orders_missed: 10},
+	{ 
+	driver_name: "afgdgbc",
+	truck_number: "KA 03 7777", 
+	distance_travelled: 45,
+	orders_delivered: 35,
+	orders_missed: 16}
+]
+
+}
+
+
 
 
 	];
@@ -214,24 +267,38 @@ for(var j=0;j<Truck_data.length;j++)
 
 	<script type="text/javascript">
 		 $(function () {
-					$('#datetimepicker1').datetimepicker();
+					$('#datetimepicker1').datetimepicker({
+							format:'DD/MM/YYYY'
+					});
 				});		
 
 
 
-				var ChoosenDate;
+	var ChoosenDate;
 	$('#datetimepicker1').on('dp.change', function() {
 	ChoosenDate = $('#datetimepicker1 input').val();
-	
-	for(var i=0;i<Truck_data.length;i++){
+	console.log(ChoosenDate);
 
-	
+
+for(var i=0;i<Truck_data.length;i++){	
 	if(ChoosenDate == Truck_data[i].date){
 		//PopulateData(i);
 
+		for(var k=0;k<Truck_data.length;k++)
+		{
+
+		var array = [Truck_data[i].details[k].truck_number,Truck_data[i].details[k].orders_missed, Truck_data[i].details[k].orders_delivered + Truck_data[i].details[k].orders_missed];
+		console.log(array);
+		TruckOrder.push(array);
+		}
 	}
+	
 
 	}
+
+	drawChart();
+
+
   })
   
 	</script>
