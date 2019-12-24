@@ -134,38 +134,23 @@
 
 
 	];
-
-	function PopulateData(j)
+	var TruckOrder = [['Truck', 'Orders Missed', 'Total Orders']];
+	//function PopulateData(j)
+for(var j=0;j<Truck_data.length;j++)
 {
 
 	for(var i=0;i<Truck_data[j].details.length;i++)
 	{
 		var array = [Truck_data[j].details[i].truck_number,Truck_data[j].details[i].orders_missed, Truck_data[j].details[i].orders_delivered + Truck_data[j].details[i].orders_missed];
+		console.log(array);
 		TruckOrder.push(array);
 	}
 }
 
-	var ChoosenDate;
-	$('#datetimepicker1').on('dp.change', function() {
-	ChoosenDate = $('#datetimepicker1 input').val();
-	
-	for(var i=0;i<Truck_data.length;i++){
-
-	
-	if(ChoosenDate == Truck_data[i].date){
-		PopulateData(i);
-
-	}
-
-	}
-  })
-
-var TruckOrder = [['Truck', 'Orders Missed', 'Total Orders']];
 
 
 
-
-console.log(TruckOrder);
+//console.log(TruckOrder);
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable(TruckOrder);
@@ -233,6 +218,21 @@ console.log(TruckOrder);
 				});		
 
 
+
+				var ChoosenDate;
+	$('#datetimepicker1').on('dp.change', function() {
+	ChoosenDate = $('#datetimepicker1 input').val();
+	
+	for(var i=0;i<Truck_data.length;i++){
+
+	
+	if(ChoosenDate == Truck_data[i].date){
+		//PopulateData(i);
+
+	}
+
+	}
+  })
   
 	</script>
   </body>
